@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace POS_System
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string item = comboBox1.Text;
+
+            switch (item)
+            {
+                case "Books":
+                    textBox2.Text = "60"; 
+                    break;
+                case "Pen":
+                    textBox2.Text = "30";
+                    break;
+                case "Bag":
+                    textBox2.Text = "2500";
+                    break;
+                case "Pencil":
+                    textBox2.Text = "20";
+                    break;
+                case "Sharpner":
+                    textBox2.Text = "30";
+                    break;
+                case "Easer":
+                    textBox2.Text = "20";
+                    break;
+
+                default:
+                    textBox2.Text = "0";
+                    break;
+            }
+
+            int amount=Convert.ToInt32(textBox2.Text) *Convert.ToInt32(textBox1.Text);
+            textBox3.Text = amount.ToString();
+            
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox1.Items.Count == 0)
+            {
+                //string shop = " Prides.lk SuperMarket";
+              
+                string header = "Item".PadRight(15) + "Qty".PadRight(15) + "Price".PadRight(15) + "Total".PadRight(15);
+                string line = new string('-', 70);
+                //listBox1.Items.Add(shop);
+                listBox1.Items.Add(header);
+                listBox1.Items.Add(line);
+            }
+            string item = comboBox1.Text.PadRight(15);      // Item name
+            string qty = textBox2.Text.PadRight(15);        // Quantity
+            string price = textBox1.Text.PadRight(15);      // Unit Price
+            string total = textBox3.Text.PadRight(15);      // Total
+
+            string output = item + qty + price + total;
+            listBox1.Items.Add(output);
+
+
+        }
+    }
+}
